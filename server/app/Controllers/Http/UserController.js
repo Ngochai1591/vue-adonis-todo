@@ -4,21 +4,21 @@ const User = use('App/Models/User')
 
 class UserController {
     async login({request, auth}){
-        const {email, password} =  request.all()
-        const token = await auth.attempt(email, password)
+        const {password, username} =  request.all()
+        const token = await auth.attempt(username, password)
         return token
     }
 
     
     async register({request}){
-        const {email, password} = request.all()
+        const {email, password, username} = request.all()
 
         const user = new User()
 
         user.fill({
             email,
             password,
-            username: email
+            username
         })
         await user.save();
 
