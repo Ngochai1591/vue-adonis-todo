@@ -29,6 +29,9 @@ Route.group(()=>{
 
   Route.post('projects/:id/tasks', "TaskController.create").middleware('auth')
   Route.get('projects/:id/tasks', 'TaskController.index').middleware('auth')
+
   
+  Route.delete('tasks/:id', 'TaskController.destroy').middleware('auth')
+  Route.patch('tasks/:id', 'TaskController.update').middleware('auth')
 
 }).prefix('api')
