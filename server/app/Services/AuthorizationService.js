@@ -14,6 +14,7 @@ class AuthorizationService {
             throw new InvalidAccessException()
         }
     }
-}
 
+    
+}
 module.exports = new AuthorizationService

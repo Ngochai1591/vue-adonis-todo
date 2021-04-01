@@ -30,6 +30,10 @@
             @input="setRegisterPassword"
             required
           ></v-text-field>
+          <v-alert type="error" :value="registerError">
+            {{registerError}}
+          </v-alert>
+
           <v-btn color="green" 
             @click="register"
             dark>
@@ -49,7 +53,8 @@ export default {
         ...mapState('authentication', [
             'registerEmail',
             'registerPassword',
-            'registerUsername'
+            'registerUsername',
+            'registerError'
         ])
     },
     methods:{
@@ -57,6 +62,7 @@ export default {
             'setRegisterEmail',
             'setRegisterPassword',
             'setRegisterUsername',
+            'setRegisterErrror'
         ]),
         ...mapActions('authentication', [
             'register'

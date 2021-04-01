@@ -1,6 +1,7 @@
 'use strict'
 
 const User = use('App/Models/User')
+const AccountService = use('App/Services/AccountService')
 
 class UserController {
     async login({request, auth}){
@@ -20,6 +21,8 @@ class UserController {
             password,
             username
         })
+
+        await AccountService.isExisted(user)
         await user.save();
 
         return this.login(...arguments)

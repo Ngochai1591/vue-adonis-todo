@@ -3,7 +3,7 @@ import store from './store'
 
 export default () =>{
     return axios.create({
-        baseUrl: store.state.baseUrl,
-        timeout: 1000,
+        baseURL: store.state.baseUrl,
+        timeout: 5000,
     })
 }
