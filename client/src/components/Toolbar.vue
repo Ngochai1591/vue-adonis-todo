@@ -10,7 +10,7 @@
         </v-btn>
       </v-toolbar-items>
       <v-toolbar-items>
-        <v-btn color="green" dark depressed>
+        <v-btn color="green" dark depressed v-if="isLogginedIn">
           <v-icon>playlist_add_check</v-icon>
           Projects
         </v-btn>
@@ -18,15 +18,15 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn color="green" dark depressed to="/register">
+        <v-btn color="green" dark depressed to="/register" v-if="!isLogginedIn" @click="resetState">
           <v-icon class="mr-2">account_box</v-icon>
           Register
         </v-btn>
-        <v-btn color="green" dark depressed>
+        <v-btn color="green" dark depressed to="/login" v-if="!isLogginedIn" @click="resetState">
           <v-icon class="mr-2">fingerprint</v-icon>
           Login
         </v-btn>
-        <v-btn color="green" dark depressed>
+        <v-btn color="green" dark depressed v-if="isLogginedIn" @click="logout">
           <v-icon class="mr-2">exit_to_app</v-icon>
           Logout
         </v-btn>
@@ -36,5 +36,18 @@
 </template>
 
 <script>
-export default {};
+import {mapGetters, mapActions} from 'vuex';
+export default {
+  computed: {
+    ...mapGetters('authentication', [
+      'isLogginedIn'
+    ])
+  },
+  methods:{
+    ...mapActions('authentication', [
+      'logout',
+      'resetState'
+    ])
+  }
+};
 </script>

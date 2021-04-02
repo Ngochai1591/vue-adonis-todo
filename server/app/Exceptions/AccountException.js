@@ -2,8 +2,8 @@
 
 const { LogicalException } = require('@adonisjs/generic-exceptions')
 
-class AccountExistedException extends LogicalException {
-  /**
+class AccountException extends LogicalException {
+ /**
    * Handle this exception by itself
    */
 
@@ -17,5 +17,4 @@ class AccountExistedException extends LogicalException {
   }
 }
 
-module.exports = AccountExistedException
-
+module.exports = AccountException
