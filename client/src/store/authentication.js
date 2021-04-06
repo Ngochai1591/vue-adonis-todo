@@ -11,7 +11,7 @@ export default {
         loginUsername: null,
         loginPassword: null,
 
-        token: null,
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTYxNzY4MzM0M30.BgGk63qxCSTvHoN5v1c63Q0d1ysSfb_XzRrSHevgSMo",
         registerError: null,
         loginError: null,
 
