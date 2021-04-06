@@ -10,8 +10,8 @@ export default {
 
         loginUsername: null,
         loginPassword: null,
-
-        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjQsImlhdCI6MTYxNzY4MzM0M30.BgGk63qxCSTvHoN5v1c63Q0d1ysSfb_XzRrSHevgSMo",
+        token: null,
+        // token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTYxNzcyMzE2OH0.s1V-aSibPlFkJVN0O4PIeEr5L-XNBJ0xvWzQ-pzpCt4",
         registerError: null,
         loginError: null,
 

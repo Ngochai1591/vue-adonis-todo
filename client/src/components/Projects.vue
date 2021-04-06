@@ -7,17 +7,33 @@
             {{ project.title }}
           </span>
           <v-text-field
+            autofocus
+            @keyup.enter="saveProject(project)"
+            @input="setProjectTitle({ project, title: $event })"
             v-if="project.isEditMode"
             :value="project.title"
           ></v-text-field>
         </v-flex>
         <v-flex xs3>
-          <v-icon 
-            v-if="!project.isEditMode" 
-            @click="setEditMode(project)">edit</v-icon>
-          <v-icon 
-            v-if="project.isEditMode" 
-            @click="unsetEditMode(project)">check</v-icon>
+          <v-icon
+            class="icon"
+            v-if="!project.isEditMode"
+            @click="setEditMode(project)"
+            >edit</v-icon
+          >
+          <v-icon
+            class="icon"
+            v-if="project.isEditMode"
+            @click="saveProject(project)"
+            >check</v-icon
+          >
+          <v-icon
+            class="icon"
+            v-if="!project.isEditMode"
+            @click="deleteProject(project)"
+          >
+            delete</v-icon
+          >
         </v-flex>
       </v-layout>
     </div>
@@ -56,19 +72,30 @@ export default {
   },
   methods: {
     ...mapMutations("projects", [
-        "setNewProjectName",
-        "setEditMode",
-        "unsetEditMode"
+      "setNewProjectName",
+      "setEditMode",
+      "unsetEditMode",
+      "setProjectTitle",
     ]),
     ...mapActions("projects", [
-        "createProject", 
-        "fetchProjects"
+      "createProject",
+      "fetchProjects",
+      "saveProject",
+      "deleteProject",
     ]),
   },
 };
 </script>
 
 <style>
+.icon {
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #333;
+}
+
 .project {
   font-size: 24px;
 }

@@ -36,6 +36,7 @@ class ProjectController {
     }
 
     async update({params, request, auth}){
+        console.log("UPDATING")
         const user = await auth.getUser()
         const {id} = params
         const project = await Project.find(id)

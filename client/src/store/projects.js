@@ -8,6 +8,20 @@ export default {
         newProjectName: null,
     },
     actions:{
+        deleteProject({commit}, project){
+            console.log("DELETE PROJECTS")
+            return HTTP().delete(`/projects/${project.id}`)
+            .then(()=>{
+                commit('removeProject', project)
+            })
+        },
+        saveProject({commit}, project){
+            console.log('SAVING PROJECTS')
+            return HTTP().patch(`/projects/${project.id}`, project)
+            .then(()=>{
+                commit('unsetEditMode', project)
+            })
+        },
         fetchProjects({commit}){
             console.log("FETCHING PROJECTS")
             return HTTP().get('/projects')
@@ -43,6 +57,12 @@ export default {
         },
         unsetEditMode(state, project){
             Vue.set(project, "isEditMode", false)
+        },
+        setProjectTitle(state, {project, title}){
+            project.title = title
+        },
+        removeProject(state, project){
+            state.projects.splice(state.projects.indexOf(project), 1);
         }
     }
 }
